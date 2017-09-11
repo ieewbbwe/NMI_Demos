@@ -11,16 +11,16 @@ import java.net.HttpURLConnection;
 public class BaseResponse implements Serializable {
 
     /*响应信息*/
-    private String message;
+    private String state;
     /*响应码*/
     private int statusCode;
 
     public String getMessage() {
-        return message;
+        return state;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.state = message;
     }
 
     public int getCode() {

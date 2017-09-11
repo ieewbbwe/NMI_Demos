@@ -5,5 +5,9 @@ package com.android_mobile.core.base;
  * Describe：MVP-V
  */
 public interface BaseView {
+    void onLoading();
 
+    void onCompleteLoading();
+
+    void showToast(String msg);
 }

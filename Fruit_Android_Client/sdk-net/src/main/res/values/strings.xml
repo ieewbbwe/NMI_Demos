@@ -1,4 +1,2 @@
 <resources>
-    <string name="app_name">sdk-net</string>
-    <string name="label_network_unavailable">网络连接不可用</string>
 </resources>

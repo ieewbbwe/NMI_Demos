@@ -18,8 +18,6 @@ import rx.Subscriber;
 
 public abstract class OnResultCallBack<T extends Response> extends Subscriber<T> {
 
-    protected final Context mContext;
-
     public abstract void onFailed(int code, String message);
 
     public abstract void onException(String message);
@@ -28,18 +26,14 @@ public abstract class OnResultCallBack<T extends Response> extends Subscriber<T>
 
     public abstract void onFinish();
 
-    public OnResultCallBack(Context context) {
-        this.mContext = context;
-    }
-
     @Override
     public void onStart() {
         super.onStart();
-        if (!isNetworkAvailable(mContext)) {
-            onFailed(ApiConstants.ERROR_NO_INTERNET, mContext.getString(R.string.label_network_unavailable));
+        /*if (!isNetworkAvailable(mContext)) {
+            onFailed(ApiConstants.ERROR_NO_INTERNET,"網絡鏈接不可用");
             onFinish();
             unsubscribe();
-        }
+        }*/
     }
 
     @Override
@@ -50,7 +44,7 @@ public abstract class OnResultCallBack<T extends Response> extends Subscriber<T>
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        onException("请求失败");
+        onFailed(0,"請求失敗");
         onFinish();
     }
 
@@ -63,7 +57,7 @@ public abstract class OnResultCallBack<T extends Response> extends Subscriber<T>
             if (response.body() instanceof BaseResponse) {
                 onFailed(response.code(), ((BaseResponse) response.body()).getMessage());//response.message());
             } else {
-                onFailed(response.code(), "请求失败");//response.message());
+                onFailed(response.code(), "請求失敗");//response.message());
             }
         }
     }
@@ -76,7 +70,7 @@ public abstract class OnResultCallBack<T extends Response> extends Subscriber<T>
      */
     private boolean isOk(T response) {
         if (response.body() instanceof BaseResponse) {
-            return true;
+            return "success".equals(((BaseResponse) response.body()).getMessage());
         } else {
             return true;
         }

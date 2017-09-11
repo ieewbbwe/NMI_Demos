@@ -6,14 +6,22 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.android_mobile.core.base.BaseActivity;
+import com.android_mobile.core.base.BasePresenter;
+import com.android_mobile.core.base.BaseView;
 import com.android_mobile.core.manager.SharedPrefManager;
+import com.beyondsoft.fruit.ui.home.HomePresenter;
+
+import javax.inject.Inject;
 
 /**
  * Created by mxh on 2017/9/11.
  * Describe：Activity基类
  */
 
-public abstract class NActivity extends BaseActivity {
+public abstract class NActivity<P extends BasePresenter> extends BaseActivity implements BaseView{
+
+    /*@Inject
+    public P mPresenter;*/
 
     static {
         //矢量图兼容
@@ -29,5 +37,18 @@ public abstract class NActivity extends BaseActivity {
         AppCompatDelegate.setDefaultNightMode(SharedPrefManager.getBoolean(Constants.IS_NIGHT, false) ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
         getWindow().setWindowAnimations(R.style.WindowAnimationFadeInOut);
         recreate();
+    }
+
+    @Override
+    public void onLoading() {
+    }
+
+    @Override
+    public void onCompleteLoading() {
+    }
+
+    @Override
+    public void showToast(String msg) {
+        toast(msg);
     }
 }
