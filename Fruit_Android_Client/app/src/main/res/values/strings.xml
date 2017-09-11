@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">蘋果</string>
+    <string name="label_not_login">未登录</string>
+    <string name="label_login">登录</string>
+    <string name="label_settings">设置</string>
+    <string name="label_night">夜间</string>
+</resources>

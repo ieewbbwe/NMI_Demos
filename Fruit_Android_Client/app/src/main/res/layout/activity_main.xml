@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <!--slidMenu-->
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/m_main_drawer_dl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/m_main_content_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <!--Bar-->
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/m_main_bar_abl"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_behavior="android.support.design.widget.AppBarLayoutSpringBehavior">
+                <!--tool-->
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/m_tool_ctl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:expandedTitleMarginBottom="64dp"
+                    app:expandedTitleMarginEnd="16dp"
+                    app:expandedTitleMarginStart="16dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/m_tool_tb"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_marginBottom="48dp"
+                        app:layout_collapseMode="pin"
+                        android:navigationIcon="@mipmap/ic_launcher"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/m_main_tl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        app:tabGravity="fill"
+                        app:tabMode="scrollable"/>
+                </android.support.design.widget.CollapsingToolbarLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <!--Content-->
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/m_nest_scroll_nsv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/m_content_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </android.support.v4.widget.NestedScrollView>
+        </android.support.design.widget.CoordinatorLayout>
+
+        <!--Slid Navigation-->
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nv_main_navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/layout_nav_header_main"
+            app:menu="@menu/activity_main_drawer"/>
+    </android.support.v4.widget.DrawerLayout>
+</FrameLayout>
