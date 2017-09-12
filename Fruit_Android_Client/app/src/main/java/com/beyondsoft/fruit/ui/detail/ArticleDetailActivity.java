@@ -1,6 +1,10 @@
 package com.beyondsoft.fruit.ui.detail;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.android_mobile.core.utiles.TimerUtils;
@@ -10,6 +14,7 @@ import com.beyondsoft.fruit.R;
 import com.beyondsoft.fruit.module.ArticleDetailBean;
 import com.beyondsoft.fruit.module.ArticleListBean;
 import com.beyondsoft.fruit.module.inter.IDetailEntity;
+import com.beyondsoft.fruit.ui.view.CustomerWebView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,6 +25,8 @@ import butterknife.ButterKnife;
  */
 public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> implements ArticleDetailContract.View {
 
+    @Bind(R.id.m_tool_tb)
+    Toolbar mToolBar;
     @Bind(R.id.m_title_tv)
     TextView mTitleTv;
     @Bind(R.id.m_label_tv)
@@ -28,8 +35,8 @@ public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> im
     TextView mTimeTv;
     @Bind(R.id.m_view_count_tv)
     TextView mViewCountTv;
-    @Bind(R.id.m_content_tv)
-    TextView mContentTv;
+    @Bind(R.id.m_content_wv)
+    CustomerWebView mContentWv;
 
     private ActivityDetailPresenter mPresenter;
 
@@ -45,11 +52,18 @@ public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> im
 
         mPresenter = new ActivityDetailPresenter();
         mPresenter.setView(this);
+
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     protected void initListener() {
-
+        mToolBar.setOnMenuItemClickListener(item -> {
+            toast("Open Share");
+            return false;
+        });
+        mToolBar.setNavigationOnClickListener(v -> finish());
     }
 
     @Override
@@ -57,7 +71,8 @@ public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> im
         ArticleListBean mArticleBean = (ArticleListBean) getIntent().getSerializableExtra(Constants.ARTICLE_LIST);
         if (null != mArticleBean) {
             mPresenter.getArticleDetail(mArticleBean.getMlArticleId());
-            // showTempInfo(mArticleBean);
+            mToolBar.setTitle(mArticleBean.getBrandName());
+            showTempInfo(mArticleBean);
         }
     }
 
@@ -65,6 +80,7 @@ public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> im
     public void showDetail(ArticleDetailBean detail) {
         //Update Temp Info
         showTempInfo(detail);
+        mContentWv.loadUrlForMobile(detail.getContentMsg());
     }
 
     /**
@@ -75,6 +91,28 @@ public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> im
         mLabelTv.setText(detailEntity.getLabel());
         mTimeTv.setText(TimerUtils.simplifyTime(detailEntity.getUpdateTime()));
         mViewCountTv.setText(String.valueOf(detailEntity.getViewCount()));
+    }
 
+    @Override
+    public void onLoading() {
+        super.onLoading();
+        displayProgressBar();
+    }
+
+    @Override
+    public void onCompleteLoading() {
+        super.onCompleteLoading();
+        hideProgressBar();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_share, menu);
+        return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }

@@ -29,9 +29,9 @@ public class ArticleAdapter extends MultiAdapter<ArticleListBean> {
     public void onBindItemHolder(SuperViewHolder holder, int position) {
         ArticleListBean item = getDataList().get(position);
         if (position == 0) {
-            //bindItemImgText(holder, item, position);
+            bindItemImgText(holder, item, position);
         } else {
-            // bindItemNormal(holder, item, position);
+            bindItemNormal(holder, item, position);
         }
     }
 
@@ -45,10 +45,10 @@ public class ArticleAdapter extends MultiAdapter<ArticleListBean> {
 
         ImageLoadFactory.getInstance().getImageLoadHandler()
                 .displayImage(item.getVideoImgPath(), mArticleIv);
-        mIndexTv.setText("" + position + 1);
+        mIndexTv.setText(String.valueOf(item.getOrder()));
         mLabelTv.setText(item.getLabel());
         mTimeTv.setText(TimerUtils.simplifyTime(item.getUpdateTime()));
-        mViewCountTv.setText(item.getSocial().getViewCount());
+        mViewCountTv.setText(String.valueOf(item.getSocial().getViewCount()));
         mTitleTv.setText(item.getTitle());
     }
 
@@ -62,10 +62,10 @@ public class ArticleAdapter extends MultiAdapter<ArticleListBean> {
 
         ImageLoadFactory.getInstance().getImageLoadHandler()
                 .displayImage(item.getVideoImgPath(), mArticleIv);
-        mListIndexTv.setText("" + position + 1);
+        mListIndexTv.setText(String.valueOf(item.getOrder()));
         mLabelTv.setText(item.getLabel());
         mTimeTv.setText(TimerUtils.simplifyTime(item.getUpdateTime()));
-        mViewCountTv.setText(item.getSocial().getViewCount());
+        mViewCountTv.setText(String.valueOf(item.getSocial().getViewCount()));
         mTitleTv.setText(item.getTitle());
     }
 }

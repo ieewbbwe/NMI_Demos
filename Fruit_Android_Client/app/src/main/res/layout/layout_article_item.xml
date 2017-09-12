@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/m_article_iv"
-            android:layout_width="110dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_img_item_default"/>
 
