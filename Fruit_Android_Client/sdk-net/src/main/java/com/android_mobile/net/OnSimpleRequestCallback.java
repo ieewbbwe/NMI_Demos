@@ -1,9 +1,5 @@
 package com.android_mobile.net;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
 import retrofit2.Response;
 
 
@@ -17,12 +13,12 @@ public abstract class OnSimpleRequestCallback<T extends Response> extends OnResu
 
     @Override
     public void onFailed(int code, String message) {
-
+        onException(message);
     }
 
     @Override
     public void onException(String message) {
-
+        onFinish();
     }
 
     @Override

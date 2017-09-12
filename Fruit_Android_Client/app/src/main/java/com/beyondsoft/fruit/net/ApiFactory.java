@@ -18,7 +18,7 @@ public class ApiFactory extends BaseFactory {
         return createApi(baseUrl, GsonConverterFactory.create(), t);
     }
 
-    public static ArticleApi getNewsApi() {
+    public static ArticleApi getArticleApi() {
         if (mArticleApi == null) {
             mArticleApi = createApi(UrlMgr.Server, GsonConverterFactory.create(), ArticleApi.class);
         }

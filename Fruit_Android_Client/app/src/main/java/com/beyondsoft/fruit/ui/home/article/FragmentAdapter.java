@@ -1,4 +1,4 @@
-package com.beyondsoft.fruit.ui.home.page;
+package com.beyondsoft.fruit.ui.home.article;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

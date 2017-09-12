@@ -12,6 +12,15 @@ import java.util.List;
 
 public class ArticleListResponse extends BaseResponse {
     private List<ArticleListBean> content;
+    private int total;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public List<ArticleListBean> getContent() {
         return content;

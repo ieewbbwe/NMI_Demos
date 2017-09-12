@@ -1,11 +1,13 @@
 package com.beyondsoft.fruit.module;
 
+import com.beyondsoft.fruit.module.inter.IMultiEntity;
+
 /**
  * Created by picher on 2017/9/11.
  * Describe：
  */
 
-public class TabBean extends BaseBean {
+public class TabBean extends BaseBean implements IMultiEntity{
     private String name;
     private String tabId;
     private String type;
@@ -27,7 +29,8 @@ public class TabBean extends BaseBean {
         this.name = name;
     }
 
-    public String getType() {
+    @Override
+    public String getItemType() {
         return type;
     }
 

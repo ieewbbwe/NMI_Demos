@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#2196F3</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="label_diet">#FE585E</color>
 </resources>

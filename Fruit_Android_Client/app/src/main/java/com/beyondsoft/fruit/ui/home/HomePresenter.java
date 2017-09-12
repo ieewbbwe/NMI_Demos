@@ -26,7 +26,7 @@ public class HomePresenter extends HomeContract.Presenter {
 
     @Override
     public void getArticleList(int start, int offset, String cateId) {
-        ApiFactory.getNewsApi().getArticleList(start,offset)
+        ApiFactory.getArticleApi().getArticleList(start, offset, "LANDING", "IPHONE")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new OnProgressRequestCallback<Response<ArticleListResponse>>(mView) {

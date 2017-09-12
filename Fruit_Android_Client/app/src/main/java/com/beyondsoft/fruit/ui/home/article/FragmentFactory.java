@@ -1,7 +1,4 @@
-package com.beyondsoft.fruit.ui.home.page;
-
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+package com.beyondsoft.fruit.ui.home.article;
 
 import com.beyondsoft.fruit.Constants;
 import com.beyondsoft.fruit.module.TabBean;
@@ -21,7 +18,7 @@ public class FragmentFactory {
      */
     public static TabFragment newInstance(TabBean tab){
         TabFragment fragment;
-       if (Constants.PAGE_TYPE_IMG_TEXT.equals(tab.getType())){
+       if (Constants.PAGE_TYPE_IMG_TEXT.equals(tab.getItemType())){
            fragment = new ArticleFragment();
        }else{
            fragment =  new ArticleFragment();

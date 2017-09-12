@@ -9,9 +9,7 @@ import com.android_mobile.core.base.BaseActivity;
 import com.android_mobile.core.base.BasePresenter;
 import com.android_mobile.core.base.BaseView;
 import com.android_mobile.core.manager.SharedPrefManager;
-import com.beyondsoft.fruit.ui.home.HomePresenter;
 
-import javax.inject.Inject;
 
 /**
  * Created by mxh on 2017/9/11.

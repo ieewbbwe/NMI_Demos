@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/m_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="飲食男女"
+        android:textColor="@color/label_diet"/>
+
+    <TextView
+        android:id="@+id/m_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="五分鐘前"
+        android:textColor="@color/text_color_gray"/>
+
+    <TextView
+        android:id="@+id/m_view_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="189,029"
+        android:textColor="@color/text_color_gray"/>
+</LinearLayout>

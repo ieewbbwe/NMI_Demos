@@ -377,6 +377,38 @@ public class TimerUtils {
         return null;
     }
 
+    public static String simplifyTime(long create) {
+        try {
+            String ret = "";
+            Calendar now = Calendar.getInstance();
+            long ms = 1000 * (now.get(Calendar.HOUR_OF_DAY) * 3600 + now.get(Calendar.MINUTE) * 60 + now.get(Calendar.SECOND));//毫秒数
+            long ms_now = now.getTimeInMillis();
+            long differ = ms_now - create;
+            if (differ < ms) {
+                if (differ < 1000 * 3600) {
+                    //一小時內顯示x分鐘前
+                    ret = differ / 1000 * 60 + "分鐘前";
+                } else {
+                    //一小時后顯示時分
+                    SimpleDateFormat today = new SimpleDateFormat("HH:mm");
+                    ret = today.format(new Date(create));
+                }
+            } else if (ms_now - create < (ms + 24 * 3600 * 1000)) {
+                ret = "昨天";
+            } else if (ms_now - create < (ms + 24 * 3600 * 1000 * 2)) {
+                ret = "前天";
+            } else {
+                SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");
+                ret = today.format(new Date(create));
+                //ret = "更早";
+            }
+            return ret;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * 計算時間差
      *

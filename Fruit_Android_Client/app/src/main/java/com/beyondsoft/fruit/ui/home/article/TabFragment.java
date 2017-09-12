@@ -1,4 +1,4 @@
-package com.beyondsoft.fruit.ui.home.page;
+package com.beyondsoft.fruit.ui.home.article;
 
 import com.beyondsoft.fruit.NFragment;
 import com.beyondsoft.fruit.module.TabBean;

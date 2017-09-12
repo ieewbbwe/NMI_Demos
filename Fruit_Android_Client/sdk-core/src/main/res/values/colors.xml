@@ -474,13 +474,13 @@
     <color name="pink_500">#e91e63</color>
     <color name="grey_300">#e0e0e0</color>
     <color name="g_default_loading_bg">@color/grey_300</color>
-    <color name="divide_line">#E0E0E2</color>
+    <color name="divide_line">#e0e0e1</color>
 
     <!--项目数据-->
     <!--普通文字颜色-->
-    <color name="text_color">#ededed</color>
+    <color name="text_color">#1b1b1b</color>
     <!-- 灰色字体颜色 -->
-    <color name="text_color_gray">#b9bdc5</color>
+    <color name="text_color_gray">#686969</color>
     <!--所有布局白色背景-->
     <color name="bg_white">#ffffff</color>
     <!--所有布局灰色背景-->

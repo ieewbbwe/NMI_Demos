@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="8dp">
+
+    <TextView
+        android:id="@+id/m_list_index_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="16dp"
+        android:text="2"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/m_article_iv"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_img_item_default"/>
+
+        <ImageView
+            android:id="@+id/m_play_iv"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|right"
+            android:src="@mipmap/ic_video_online"/>
+    </FrameLayout>
+
+    <!--content-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/m_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="3新疆圣戰士遭擊斃，潘陽爆恐襲 3新疆圣戰士遭擊斃，潘陽爆恐襲 潘陽爆恐襲潘陽爆恐襲"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"/>
+
+        <include
+            layout="@layout/layout_article_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>

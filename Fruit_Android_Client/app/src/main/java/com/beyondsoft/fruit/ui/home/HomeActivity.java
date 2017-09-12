@@ -1,38 +1,28 @@
 package com.beyondsoft.fruit.ui.home;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
-import com.android_mobile.core.utiles.Lg;
 import com.beyondsoft.fruit.Constants;
 import com.beyondsoft.fruit.NActivity;
 import com.beyondsoft.fruit.R;
-import com.beyondsoft.fruit.module.ArticleListBean;
 import com.beyondsoft.fruit.module.TabBean;
-import com.beyondsoft.fruit.ui.home.page.ArticleFragment;
-import com.beyondsoft.fruit.ui.home.page.FragmentAdapter;
-import com.beyondsoft.fruit.ui.home.page.FragmentFactory;
+import com.beyondsoft.fruit.ui.home.article.FragmentAdapter;
+import com.beyondsoft.fruit.ui.home.article.FragmentFactory;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**
@@ -45,17 +35,9 @@ public class HomeActivity extends NActivity<HomePresenter> implements HomeContra
     Toolbar mToolTb;
     @Bind(R.id.m_main_tl)
     TabLayout mMainTl;
-    @Bind(R.id.m_tool_ctl)
-    CollapsingToolbarLayout mToolCtl;
-    @Bind(R.id.m_main_bar_abl)
-    AppBarLayout mMainBarAbl;
     @Bind(R.id.m_content_vp)
     ViewPager mContentVp;
-    @Bind(R.id.m_nest_scroll_nsv)
-    NestedScrollView mNestScrollNsv;
-    @Bind(R.id.m_main_content_cl)
-    CoordinatorLayout mMainContentCl;
-    @Bind(R.id.nv_main_navigation)
+    @Bind(R.id.m_slid_nv)
     NavigationView nvMainNavigation;
     @Bind(R.id.m_main_drawer_dl)
     DrawerLayout mMainDrawerDl;
@@ -79,8 +61,18 @@ public class HomeActivity extends NActivity<HomePresenter> implements HomeContra
     }
 
     @Override
-    protected void initListener() {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_tools, menu);
+        return true;
+    }
 
+    @Override
+    protected void initListener() {
+        mToolTb.setOnMenuItemClickListener(item -> {
+            toast("Open MapView");
+            return false;
+        });
+        mToolTb.setNavigationOnClickListener(v -> mMainDrawerDl.openDrawer(nvMainNavigation));
     }
 
     @Override

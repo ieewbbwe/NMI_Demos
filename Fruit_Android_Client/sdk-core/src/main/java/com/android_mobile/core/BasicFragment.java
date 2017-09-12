@@ -140,4 +140,8 @@ public abstract class BasicFragment extends RxFragment implements IBasicCoreMeth
     public void setTitle(int resId) {
         activity.setTitle(resId);
     }
+
+    public BasicActivity getBActivity(){
+        return activity;
+    }
 }

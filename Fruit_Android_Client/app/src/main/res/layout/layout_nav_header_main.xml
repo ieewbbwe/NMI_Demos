@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="?attr/colorPrimary"
-                android:orientation="vertical"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
 
     <ImageView
         android:id="@+id/m_im_face_iv"
@@ -22,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/label_not_login"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:textColor="@color/white"/>
 
 
 </RelativeLayout>
