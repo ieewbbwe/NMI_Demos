@@ -26,7 +26,7 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
     public String getTitle() {
         return title;
     }
-
+    
     @Override
     public String getLabel() {
         return label;

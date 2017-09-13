@@ -6,6 +6,10 @@ import com.android_mobile.core.BasicApplication;
 import com.android_mobile.core.app.UncaughtException;
 import com.android_mobile.core.manager.SharedPrefManager;
 import com.android_mobile.core.manager.image.ImageLoadFactory;
+import com.android_mobile.net.OkHttpFactory;
+
+import java.io.File;
+import java.io.InputStream;
 
 /**
  * Created by mxh on 2017/09/11.
@@ -21,6 +25,6 @@ public class NApplication extends BasicApplication {
         Thread.setDefaultUncaughtExceptionHandler(UncaughtException.getInstance(getApplicationContext()));
         AppCompatDelegate.setDefaultNightMode(SharedPrefManager.getBoolean(Constants.IS_NIGHT, false) ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
         //支持Https需要设置证书 不需要则第二个参数传空
-        //OkHttpFactory.init(new File(getExternalCacheDir(), "response_cache"), (InputStream[]) null);
+        OkHttpFactory.init(new File(getExternalCacheDir(), "response_cache"), (InputStream[]) null);
     }
 }
