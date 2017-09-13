@@ -63,7 +63,7 @@ public class ArticleDetailActivity extends NActivity<ActivityDetailPresenter> im
 
     @Override
     public void showDetail(ArticleDetailBean detail) {
-        //Update Temp Info
+        //Update TempInfo
         showTempInfo(detail);
     }
 
