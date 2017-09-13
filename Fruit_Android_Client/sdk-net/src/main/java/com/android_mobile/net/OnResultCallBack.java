@@ -53,6 +53,7 @@ public abstract class OnResultCallBack<T extends Response> extends Subscriber<T>
         if (response.isSuccessful() && isOk(response)) {
             Log.d("network", "response:" + new Gson().toJson(response));
             onResponse(response);
+            onFinish();
         } else {
             if (response.body() instanceof BaseResponse) {
                 onFailed(response.code(), ((BaseResponse) response.body()).getMessage());//response.message());

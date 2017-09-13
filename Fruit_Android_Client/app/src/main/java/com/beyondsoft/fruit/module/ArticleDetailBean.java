@@ -1,7 +1,9 @@
 package com.beyondsoft.fruit.module;
 
+import com.android_mobile.core.utiles.CollectionUtils;
 import com.beyondsoft.fruit.module.inter.IDetailEntity;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -15,7 +17,7 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
     private List<MediaBean> mediaGroup;
     private String title;
     private SocialBean social;
-    private ContentBlockBean contentBlocks;
+    private List<ContentBlockBean> contentBlocks;
     private String label;
     private long displayTime;
     private long updateDate;
@@ -31,8 +33,10 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
     }
 
     @Override
-    public int getViewCount() {
-        return social.getViewCount();
+    public String getViewCount() {
+        DecimalFormat df1 = new DecimalFormat("#,###");
+
+        return social==null?"0":df1.format(social.getViewCount());
     }
 
     @Override
@@ -47,6 +51,20 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
 
     @Override
     public String getContentMsg() {
-        return contentBlocks == null ? "" : contentBlocks.getContent();
+        StringBuilder sb = new StringBuilder();
+        if(CollectionUtils.isNotEmpty(contentBlocks)){
+            for(ContentBlockBean content:contentBlocks){
+                if(CollectionUtils.isNotEmpty(content.getPhotos())){
+                    sb.append(image(content.getPhotos().get(0).getImagePath()));
+                }
+                sb.append(content.getContent());
+            }
+            return sb.toString();
+        }
+        return "";
+    }
+
+    private String image(String imagePath) {
+        return "<img src='"+imagePath+"'/> </br>";
     }
 }

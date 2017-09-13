@@ -19,7 +19,7 @@ public interface IDetailEntity {
     /**
      * 獲取瀏覽量
      */
-    int getViewCount();
+    String getViewCount();
 
     /**
      * 獲取上傳時間

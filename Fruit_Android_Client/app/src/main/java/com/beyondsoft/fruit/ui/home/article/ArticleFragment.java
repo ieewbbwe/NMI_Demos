@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.android_mobile.core.utiles.Lg;
 import com.beyondsoft.fruit.Constants;
 import com.beyondsoft.fruit.R;
 import com.beyondsoft.fruit.adapter.ArticleAdapter;
@@ -33,12 +34,13 @@ public class ArticleFragment extends TabFragment {
 
     private LRecyclerView mLrv;
 
-    private int start = 0;
-    private int offset = 10;
+    private int mStart = 0;
+    private int mOffset = 10;
     private List<ArticleListBean> mArticleList = new ArrayList<>();
     private ArticleAdapter mInnerAdapter;
     private int mTotal;
     private LRecyclerViewAdapter mAdapter;
+    private boolean isLoadingMore = false;
 
     @Override
     protected int create() {
@@ -65,36 +67,29 @@ public class ArticleFragment extends TabFragment {
     @Override
     protected void initListener() {
         mLrv.setOnRefreshListener(() -> {
-            start = 0;
+            mStart = 0;
             mInnerAdapter.getDataList().clear();
-            requestData(start, offset);
+            requestData(mStart, mOffset);
         });
         mLrv.setOnLoadMoreListener(() -> {
             if (hasMore()) {
-                start += offset;
-                requestData(start, offset);
+                mStart += mOffset;
+                isLoadingMore = true;
+                requestData(mStart, mOffset);
             } else {
                 mLrv.setNoMore(true);
             }
         });
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(getBActivity(), ArticleDetailActivity.class);
-                intent.putExtra(Constants.ARTICLE_LIST, mInnerAdapter.getDataList().get(position));
-                startActivity(intent);
-            }
+        mAdapter.setOnItemClickListener((view, position) -> {
+            Intent intent = new Intent(getBActivity(), ArticleDetailActivity.class);
+            intent.putExtra(Constants.ARTICLE_LIST, mInnerAdapter.getDataList().get(position));
+            pushActivity(intent,false);
         });
     }
 
     @Override
     protected void initData() {
-        //mLrv.refresh();
-        /*-----測試數據-----*/
-        for (int i = 0; i < 10; i++) {
-            mArticleList.add(new ArticleListBean("" + i));
-        }
-        mInnerAdapter.addAll(mArticleList);
+        mLrv.refresh();
     }
 
     private void requestData(int start, int offset) {
@@ -109,10 +104,20 @@ public class ArticleFragment extends TabFragment {
                     }
 
                     @Override
+                    public void onFailed(int code, String message) {
+                        super.onFailed(code, message);
+                        //加載更多失敗時 恢復上次的起始位
+                        if(isLoadingMore){
+                            mStart -= mOffset;
+                        }
+                    }
+
+                    @Override
                     public void onFinish() {
                         super.onFinish();
+                        isLoadingMore = false;
                         mLrv.refreshComplete(offset);
-                        mLrv.setNoMore(hasMore());
+                        mLrv.setNoMore(!hasMore());
                     }
                 });
     }

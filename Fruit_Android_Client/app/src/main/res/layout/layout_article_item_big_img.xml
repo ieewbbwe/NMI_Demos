@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="310dp"
+    android:layout_height="300dp"
     android:orientation="vertical">
 
     <FrameLayout
+        android:layout_above="@+id/m_advertise_iv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/m_article_iv"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="match_parent"
             android:src="@mipmap/ic_img_item_default"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="#34000000"
+            android:background="#6b000000"
             android:orientation="horizontal"
             android:padding="4dp">
 
@@ -98,9 +100,10 @@
     </FrameLayout>
 
     <ImageView
+        android:layout_alignParentBottom="true"
         android:id="@+id/m_advertise_iv"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:scaleType="fitXY"
         android:src="@mipmap/center_adv"/>
-</LinearLayout>
+</RelativeLayout>

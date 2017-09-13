@@ -3,6 +3,7 @@ package com.beyondsoft.fruit.module;
 import com.beyondsoft.fruit.module.inter.IDetailEntity;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -19,6 +20,24 @@ public class ArticleListBean extends BaseBean implements Serializable, IDetailEn
     private String label;
     private SocialBean social;
     private List<MediaBean> mediaGroup;
+    private int order;
+    private String brandName;
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
 
     public ArticleListBean() {
     }
@@ -64,13 +83,15 @@ public class ArticleListBean extends BaseBean implements Serializable, IDetailEn
     }
 
     @Override
-    public int getViewCount() {
-        return social == null ? 0 : social.getViewCount();
+    public String getViewCount() {
+        DecimalFormat df1 = new DecimalFormat("#,###");
+
+        return social == null ? "0" : df1.format(social.getViewCount());
     }
 
     @Override
     public long getUpdateTime() {
-        return updateDate;
+        return displayTime;
     }
 
     @Override
