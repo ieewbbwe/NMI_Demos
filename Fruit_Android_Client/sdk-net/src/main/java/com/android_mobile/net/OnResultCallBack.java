@@ -3,10 +3,8 @@ package com.android_mobile.net;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import com.android_mobile.net.response.BaseResponse;
-import com.google.gson.Gson;
 
 import retrofit2.Response;
 import rx.Subscriber;
@@ -51,7 +49,6 @@ public abstract class OnResultCallBack<T extends Response> extends Subscriber<T>
     @Override
     public void onNext(T response) {
         if (response.isSuccessful() && isOk(response)) {
-            Log.d("network", "response:" + new Gson().toJson(response));
             onResponse(response);
             onFinish();
         } else {

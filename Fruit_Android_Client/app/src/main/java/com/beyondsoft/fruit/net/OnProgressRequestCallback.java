@@ -1,8 +1,5 @@
 package com.beyondsoft.fruit.net;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.android_mobile.core.base.BaseView;
 import com.android_mobile.net.OnSimpleRequestCallback;
 
@@ -25,6 +22,7 @@ public abstract class OnProgressRequestCallback<T extends Response> extends OnSi
     public void onFailed(int code, String message) {
         super.onFailed(code, message);
         mView.showToast(message);
+        //TODO 请求失败则从磁盘缓存中拿出数据
     }
 
     @Override

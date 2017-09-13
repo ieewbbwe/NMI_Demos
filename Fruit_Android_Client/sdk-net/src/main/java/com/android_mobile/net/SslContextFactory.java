@@ -1,8 +1,5 @@
-package com.webber.mcorelibspace.demo.net;
+package com.android_mobile.net;
 
-import android.content.Context;
-
-import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;

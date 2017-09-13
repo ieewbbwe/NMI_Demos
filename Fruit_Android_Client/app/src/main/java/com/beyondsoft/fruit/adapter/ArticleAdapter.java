@@ -1,6 +1,7 @@
 package com.beyondsoft.fruit.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,7 +49,7 @@ public class ArticleAdapter extends MultiAdapter<ArticleListBean> {
         mIndexTv.setText(String.valueOf(item.getOrder()));
         mLabelTv.setText(item.getLabel());
         mTimeTv.setText(TimerUtils.simplifyTime(item.getUpdateTime()));
-        mViewCountTv.setText(String.valueOf(item.getSocial().getViewCount()));
+        mViewCountTv.setText(String.valueOf(item.getViewCount()));
         mTitleTv.setText(item.getTitle());
     }
 
@@ -59,13 +60,15 @@ public class ArticleAdapter extends MultiAdapter<ArticleListBean> {
         TextView mLabelTv = holder.getView(R.id.m_label_tv);
         TextView mTimeTv = holder.getView(R.id.m_time_tv);
         TextView mViewCountTv = holder.getView(R.id.m_view_count_tv);
+        ImageView mPlayIv = holder.getView(R.id.m_play_iv);
 
         ImageLoadFactory.getInstance().getImageLoadHandler()
                 .displayImage(item.getVideoImgPath(), mArticleIv);
         mListIndexTv.setText(String.valueOf(item.getOrder()));
         mLabelTv.setText(item.getLabel());
         mTimeTv.setText(TimerUtils.simplifyTime(item.getUpdateTime()));
-        mViewCountTv.setText(String.valueOf(item.getSocial().getViewCount()));
+        mViewCountTv.setText(String.valueOf(item.getViewCount()));
         mTitleTv.setText(item.getTitle());
+        mPlayIv.setVisibility(item.hasVideos()? View.VISIBLE:View.GONE);
     }
 }

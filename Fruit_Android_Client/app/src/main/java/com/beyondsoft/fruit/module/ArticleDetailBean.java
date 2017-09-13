@@ -36,12 +36,12 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
     public String getViewCount() {
         DecimalFormat df1 = new DecimalFormat("#,###");
 
-        return social==null?"0":df1.format(social.getViewCount());
+        return social == null ? "0" : df1.format(social.getViewCount());
     }
 
     @Override
     public long getUpdateTime() {
-        return updateDate;
+        return displayTime;
     }
 
     @Override
@@ -52,9 +52,9 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
     @Override
     public String getContentMsg() {
         StringBuilder sb = new StringBuilder();
-        if(CollectionUtils.isNotEmpty(contentBlocks)){
-            for(ContentBlockBean content:contentBlocks){
-                if(CollectionUtils.isNotEmpty(content.getPhotos())){
+        if (CollectionUtils.isNotEmpty(contentBlocks)) {
+            for (ContentBlockBean content : contentBlocks) {
+                if (CollectionUtils.isNotEmpty(content.getPhotos())) {
                     sb.append(image(content.getPhotos().get(0).getImagePath()));
                 }
                 sb.append(content.getContent());
@@ -64,7 +64,59 @@ public class ArticleDetailBean extends BaseBean implements IDetailEntity {
         return "";
     }
 
+    /**
+     * 添加內容中的圖片標記，
+     * 因為示例用，暫時添加一張
+     */
     private String image(String imagePath) {
-        return "<img src='"+imagePath+"'/> </br>";
+        return "<img src='" + imagePath + "'/> </br>";
+    }
+
+    public List<MediaBean> getMediaGroup() {
+        return mediaGroup;
+    }
+
+    public void setMediaGroup(List<MediaBean> mediaGroup) {
+        this.mediaGroup = mediaGroup;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public SocialBean getSocial() {
+        return social;
+    }
+
+    public void setSocial(SocialBean social) {
+        this.social = social;
+    }
+
+    public List<ContentBlockBean> getContentBlocks() {
+        return contentBlocks;
+    }
+
+    public void setContentBlocks(List<ContentBlockBean> contentBlocks) {
+        this.contentBlocks = contentBlocks;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public long getDisplayTime() {
+        return displayTime;
+    }
+
+    public void setDisplayTime(long displayTime) {
+        this.displayTime = displayTime;
+    }
+
+    public long getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(long updateDate) {
+        this.updateDate = updateDate;
     }
 }

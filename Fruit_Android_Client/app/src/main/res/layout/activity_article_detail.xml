@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_white"
-    android:orientation="vertical"
-    tools:context="com.beyondsoft.fruit.ui.detail.ArticleDetailActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_white"
+              android:orientation="vertical"
+              tools:context="com.beyondsoft.fruit.ui.detail.ArticleDetailActivity">
 
     <!--Bar-->
     <android.support.design.widget.AppBarLayout
@@ -22,7 +22,7 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
     </android.support.design.widget.AppBarLayout>
 
     <ScrollView
@@ -34,10 +34,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <!--VideoPlayView-->
-            <View
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="#0094ff" />
+                android:layout_height="280dp">
+
+                <com.xiao.nicevideoplayer.NiceVideoPlayer
+                    android:id="@+id/m_video_nvp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/m_news_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"/>
+            </FrameLayout>
             <!--Content-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,14 +63,14 @@
                     android:layout_height="wrap_content"
                     android:text="機場後日集會 抗私事特辯 航空業500人反對梁濫權 市民撐場"
                     android:textColor="@color/text_color"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <include
                     layout="@layout/layout_article_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginTop="16dp" />
+                    android:layout_marginTop="16dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,7 +83,7 @@
                         android:layout_height="20dp"
                         android:background="@drawable/shape_gray_border"
                         android:padding="2dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"/>
 
                     <ImageView
                         android:layout_width="40dp"
@@ -79,14 +91,14 @@
                         android:layout_marginLeft="8dp"
                         android:background="@drawable/shape_gray_border"
                         android:padding="2dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"/>
                 </LinearLayout>
 
                 <com.beyondsoft.fruit.ui.view.CustomerWebView
                     android:id="@+id/m_content_wv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="16dp" />
+                    android:layout_marginTop="16dp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

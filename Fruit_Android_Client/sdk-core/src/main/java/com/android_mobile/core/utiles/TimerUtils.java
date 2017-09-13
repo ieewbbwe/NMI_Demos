@@ -380,22 +380,22 @@ public class TimerUtils {
     public static String simplifyTime(long create) {
         try {
             String ret = "";
-            Calendar now = Calendar.getInstance();
-            long ms = 1000 * (now.get(Calendar.HOUR_OF_DAY) * 3600 + now.get(Calendar.MINUTE) * 60 + now.get(Calendar.SECOND));//毫秒数
-            long ms_now = now.getTimeInMillis();
-            long differ = ms_now - create;
-            if (differ < ms) {
+            Calendar cal = Calendar.getInstance();
+            long ms = 1000 * (cal.get(Calendar.HOUR_OF_DAY) * 3600 + cal.get(Calendar.MINUTE) * 60 + cal.get(Calendar.SECOND));//毫秒数
+            long ms_now = cal.getTimeInMillis();
+            long differ = ms_now - create * 1000;
+            Lg.print("picher_time", "now:" + ms_now + "create:" + create + "ms:" + ms);
+            if (differ < ms + 1000 * 3600 * 24) {
                 if (differ < 1000 * 3600) {
                     //一小時內顯示x分鐘前
-                    ret = differ / 1000 * 60 + "分鐘前";
+                    ret = differ / (1000 * 60) + "分鐘前";
                 } else {
-                    //一小時后顯示時分
-                    SimpleDateFormat today = new SimpleDateFormat("HH:mm");
-                    ret = today.format(new Date(create));
+                    //一小時后顯示x小时前
+                    ret = differ / (1000 * 60 * 60) + "小时前";
                 }
-            } else if (ms_now - create < (ms + 24 * 3600 * 1000)) {
+            } else if (differ > (ms + 24 * 3600 * 1000)) {
                 ret = "昨天";
-            } else if (ms_now - create < (ms + 24 * 3600 * 1000 * 2)) {
+            } else if (differ > (ms + 24 * 3600 * 1000 * 2)) {
                 ret = "前天";
             } else {
                 SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");

@@ -1,5 +1,7 @@
 package com.beyondsoft.fruit.module;
 
+import com.android_mobile.core.utiles.CollectionUtils;
+import com.beyondsoft.fruit.Constants;
 import com.beyondsoft.fruit.module.inter.IDetailEntity;
 
 import java.io.Serializable;
@@ -71,7 +73,7 @@ public class ArticleListBean extends BaseBean implements Serializable, IDetailEn
     }
 
     public long getUpdateDate() {
-        return updateDate;
+        return displayTime;
     }
 
     public void setUpdateDate(long updateDate) {
@@ -91,7 +93,7 @@ public class ArticleListBean extends BaseBean implements Serializable, IDetailEn
 
     @Override
     public long getUpdateTime() {
-        return displayTime;
+        return updateDate;
     }
 
     @Override
@@ -122,5 +124,16 @@ public class ArticleListBean extends BaseBean implements Serializable, IDetailEn
 
     public void setMediaGroup(List<MediaBean> mediaGroup) {
         this.mediaGroup = mediaGroup;
+    }
+
+    public boolean hasVideos() {
+        if (CollectionUtils.isNotEmpty(mediaGroup)) {
+            for (MediaBean item : mediaGroup) {
+                if (Constants.ARTICLE_TYPE_VIDEOS.equals(item.getType())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
@@ -42,6 +43,7 @@ public class HomeActivity extends NActivity<HomePresenter> implements HomeContra
     @Bind(R.id.m_main_drawer_dl)
     DrawerLayout mMainDrawerDl;
 
+    private static final int DEFAULT_LOAD_PAGE = 3;
     private HomePresenter mPresenter;
 
     @Override
@@ -57,7 +59,13 @@ public class HomeActivity extends NActivity<HomePresenter> implements HomeContra
         mPresenter.setView(this);
 
         setSupportActionBar(mToolTb);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Bind Menu&Tool
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mMainDrawerDl, mToolTb, 0, 0);
+        mDrawerToggle.syncState();
+        mMainDrawerDl.addDrawerListener(mDrawerToggle);
+        // set default load page
+        mContentVp.setOffscreenPageLimit(DEFAULT_LOAD_PAGE);
     }
 
     @Override

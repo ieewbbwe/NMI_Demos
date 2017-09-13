@@ -20,7 +20,7 @@ public class NApplication extends BasicApplication {
         ImageLoadFactory.init(getApplicationContext());
         Thread.setDefaultUncaughtExceptionHandler(UncaughtException.getInstance(getApplicationContext()));
         AppCompatDelegate.setDefaultNightMode(SharedPrefManager.getBoolean(Constants.IS_NIGHT, false) ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-        //支持Https需要设置该证书 不需要则不用初始化
-        //OkHttpFactory.init(getExternalCacheDir(), (InputStream[]) null);
+        //支持Https需要设置证书 不需要则第二个参数传空
+        //OkHttpFactory.init(new File(getExternalCacheDir(), "response_cache"), (InputStream[]) null);
     }
 }

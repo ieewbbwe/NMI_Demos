@@ -3,10 +3,8 @@ package com.android_mobile.net;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import com.android_mobile.net.request.BaseRequest;
-import com.google.gson.Gson;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -64,7 +62,6 @@ public class NetUtils {
 
         }
 
-        Log.d("network", "params:" + new Gson().toJson(params));
         return params;
     }
     /**

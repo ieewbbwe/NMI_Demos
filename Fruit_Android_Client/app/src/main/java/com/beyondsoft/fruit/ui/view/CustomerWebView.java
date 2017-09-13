@@ -1,11 +1,8 @@
 package com.beyondsoft.fruit.ui.view;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -31,11 +28,11 @@ public class CustomerWebView extends WebView {
             "<div class=\"mobile-html\">%s</div></body></html>";
 
     public CustomerWebView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public CustomerWebView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public CustomerWebView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -61,14 +58,14 @@ public class CustomerWebView extends WebView {
     }
 
     public void loadUrlForMobile(String content) {
-        Lg.print("picher",content);
+        Lg.print("picher", content);
         loadDataWithBaseURL(null, String.format(webSell, content), "text/html", "UTF-8", null);
     }
 
     //可自定义拦截信息
     public static class DefaultWebClient extends WebViewClient {
 
-        public DefaultWebClient( ) {
+        public DefaultWebClient() {
         }
 
         @Override

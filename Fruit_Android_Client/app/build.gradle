@@ -37,7 +37,7 @@ android {
         }
         release {
             // 移除无用的resource文件
-            shrinkResources true
+            shrinkResources false
             //混淆
             minifyEnabled false
             //Zipalign优化
@@ -65,5 +65,8 @@ dependencies {
     compile 'com.github.todou:appbarspring:1.0.3'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //视屏播放控件
+    compile 'com.github.xiaoyanger0825:NiceVieoPlayer:v2.1'
 
 }

@@ -32,7 +32,8 @@
             android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_gravity="bottom|right"
-            android:src="@mipmap/ic_video_online"/>
+            android:src="@mipmap/ic_video_online"
+            android:visibility="gone"/>
     </FrameLayout>
 
     <!--content-->

@@ -1,5 +1,9 @@
 package com.beyondsoft.fruit.module.inter;
 
+import com.beyondsoft.fruit.module.MediaBean;
+
+import java.util.List;
+
 /**
  * Created by mxh on 2017/9/12.
  * Describe：
@@ -35,4 +39,9 @@ public interface IDetailEntity {
      * 獲取詳情信息
      */
     String getContentMsg();
+
+    /**
+     * 获取视屏信息
+     */
+    List<MediaBean> getMediaGroup();
 }

@@ -11,6 +11,33 @@ public class MediaBean extends BaseBean {
     private String largePath;
     private String smallPath;
     private String type;
+    private String quality;
+    private String title;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
 
     public String getHeight() {
         return height;
